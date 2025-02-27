@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { RAPID_API_KEY, RAPID_API_HOST } from '../config';
 
 const CurrencyConverter = () => {
     const [from, setFrom] = useState('');
@@ -11,15 +12,15 @@ const CurrencyConverter = () => {
         const options = {
             method: 'GET',
             headers: {
-                'x-rapidapi-key': '982236b23bmsh1a89368249e188bp194d4djsnc825889c38cd',
-                'x-rapidapi-host': 'currency-conversion-and-exchange-rates.p.rapidapi.com'
+                'x-rapidapi-key': RAPID_API_KEY,
+                'x-rapidapi-host': RAPID_API_HOST
             }
         };
 
         try {
             const response = await fetch(url, options);
             const result = await response.json();
-            setResult(result); // Assuming the result has a proper structure
+            setResult(result);
         } catch (error) {
             console.error(error);
         }
